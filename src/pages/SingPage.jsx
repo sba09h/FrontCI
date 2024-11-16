@@ -11,9 +11,9 @@ function SignPage() {
         
         <div className="m-10">
           <ul>
-            <li><a href="">Nombre</a></li>
-            <li><a href="">RUN</a></li>
-            <li><a href="">Fecha</a></li>
+            <li><a href="">Nombre:</a></li>
+            <li><a href="">RUN:</a></li>
+            <li><a href="">Fecha:</a></li>
           </ul>
         </div>
 
@@ -26,17 +26,23 @@ function SignPage() {
           Declaro que el dentista me ha explicado las ventajas y desventajas de este tratamiento, las alternativas a este y las consecuencias de no realizarlo. Sé que tengo derecho y a solicitar que se me devuelvan a explicar las partes de mi tratamiento que no tenga suficientemente claras. Además, he sido informado de los honorarios involucrados en mi tratamiento y las condiciones de pago de este, quedando de acuerdo.
         </p>
 
-        <label>
-          <input className="accent-red-500" type="checkbox" checked /> Entiendo y Acepto Términos
-        </label>
+        <form action="">
+          <label>
+            <input className="accent-red-500" type="checkbox" /> Entiendo y Acepto Términos
+          </label>
 
-        <input 
-          type="text" 
-          name="RUN" 
-          id="run" 
-          className="border-2 border-rose-600 bg-zinc-600 text-white px-4 py-2 rounded-md my-2" 
-          placeholder="RUN es requerido" 
-        />
+          <input 
+            type="text" 
+            name="run" 
+            id="run" 
+            className="border-2 border-rose-600 bg-zinc-600 text-white px-4 py-2 rounded-md my-2" 
+            placeholder="RUN es requerido" 
+          />
+
+          <input type="submit" value="aceptar"/>
+          
+        </form>
+        
       </div>
       </>
       

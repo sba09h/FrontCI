@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage"
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import SignPage from "./pages/SingPage";
+import Dashboard from "./pages/Dashboard";
 
 
 
@@ -16,6 +17,7 @@ function App() {
             <Route path="/register" element={<RegisterPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/sign" element={<SignPage/>}/> 
+            <Route path="/dash" element={<Dashboard/>}/> 
          </Routes>
       </BrowserRouter>
   )
