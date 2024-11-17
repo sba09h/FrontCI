@@ -8,10 +8,10 @@ function Navbar() {
         <ul className="flex justify-between  text-black px-5">
             <div>
                 <li >
-                    <a href="/" className="site-title font-extrabold text-black text-6xl">C.I.E.</a>
+                    <a href="/" className="site-title font-extrabold text-black text-6xl">C.I.D.</a>
                 </li>
                 <li>
-                <a href="/" className="font-light text-black">consentimiento informado electronico</a>
+                <a href="/" className="font-light text-black">Consentimiento Informado Digital</a>
                 </li>
             </div>
             

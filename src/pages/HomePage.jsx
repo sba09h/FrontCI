@@ -10,7 +10,7 @@ function HomePage() {
       <div className="min-h-screen flex flex-col items-center justify-center">
         <div className="border-y-gray-900  w-4/5 rounded-md p-8 m-4">
           <div className=" flex flex-col items-center ">
-            <h1 className="text-5xl font-extrabold text-center mb-14 ">Firma Digital</h1>
+            <h1 className="text-4xl font-extrabold text-center mb-14 ">¿Listo para tu Firma Digital?</h1>
             <img src={contrato} alt="imagen de contrato1" className="rounded-md w-7/8"/>
           </div>
           <p className="text-white font-light mt-10 text-justify">

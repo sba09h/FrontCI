@@ -36,7 +36,7 @@ function SignPage() {
             name="run" 
             id="run" 
             className="border-2 border-rose-600 bg-zinc-600 text-white px-4 py-2 rounded-md my-2" 
-            placeholder="RUN es requerido" 
+            placeholder="Debe ingresar número de documento para aceptar" 
           />
 
           <input type="submit" value="aceptar"/>
