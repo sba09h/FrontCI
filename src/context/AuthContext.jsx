@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import {repuestaReq, loginReq} from "../api/auth.js"
+import {repuestaReq, loginReq, verifyTokenReq } from "../api/auth.js"
+import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 
@@ -17,6 +18,7 @@ export const AuthProvider = ({children}) => {
     const [ user, setUser] = useState(null);
     const [isAuthtenticated, setIsAuthenticated] = useState(false);
     const [errors, setErrors] = useState();
+    const [loading, setLoading] = useState(true);
 
     try {
         const signup = async (user) =>{
@@ -34,6 +36,8 @@ export const AuthProvider = ({children}) => {
         try {
             const res = await loginReq(user)
             console.log(res) 
+            setIsAuthenticated(true)
+            setUser(res.data)
         } catch (error) {
             if(Array.isArray(error.reponse.data)){
                 return setErrors(error.reponse.data)
@@ -41,6 +45,36 @@ export const AuthProvider = ({children}) => {
             setErrors([error.reponse.data.message])
         }
     }
+
+    useEffect(()=> {
+        async function checkLogin () {
+            const cookies = Cookies.get()
+            if(cookies.token) {
+                setIsAuthenticated(false);
+                setLoading(false);
+                return setUser(null)
+            }
+
+            try {
+                const res = await verifyTokenReq(cookies.token)
+                if (!res.data) {
+                    setIsAuthenticated(false);
+                    setLoading(false);
+                    return;  
+                }
+                
+                setIsAuthenticated(true);
+                setUser(res.data);
+                setLoading(false);
+            } catch (error) {
+                setIsAuthenticated(false);
+                setUser(null);
+                setLoading(false);
+            }
+            
+        }
+        checkLogin();
+    }, []);
 
     useEffect(() => {
         if(errors.length > 0){
@@ -52,7 +86,7 @@ export const AuthProvider = ({children}) => {
     }, [errors])
 
     return(
-        <AuthContext.Provider value={{ signup, signin, user, isAuthtenticated, errors,
+        <AuthContext.Provider value={{ signup, signin, user, isAuthtenticated, errors, loading,
 
         }}>
             {children}
