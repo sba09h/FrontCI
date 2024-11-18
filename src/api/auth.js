@@ -1,8 +1,15 @@
-import axios from "axios";
+import axios from "./axios.js";
 
-const API = "http://localhost:3000/api"
+export const respuestaReq = (user) => axios.post(`/register`, user);
 
-export const repuestaReq = user => axios.post(`${API}/register`, user);
+export const loginReq = (user) => axios.post(`/login`, user);
 
-export const loginReq = user => axios.post(`${API}/login`, user);
+
+
+export const verifyTokenReq = () => 
+    axios.get(`/verify`, {
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+    });
 

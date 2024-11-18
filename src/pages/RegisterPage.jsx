@@ -8,32 +8,31 @@ import axios  from "axios";
 
 function RegisterPage() {
     const {register, handleSubmit, formState: {errors}, } = useForm();
-    const {signup, iisAuthtenticated, errors: regErrors } = useAuth();
+    const {signup, isAuthtenticated, errors: regErrors } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
         if (isAuthtenticated) navigate("/dash");    
-    }, [isAuthtenticated])
-
-    
+    }, [isAuthtenticated]);
 
     const onSubmit = handleSubmit(async (values) => {
+      console.log(values)
         signup(values)
         
     });
     return (
       <>
       <Navbar/>
-      <NavLink to= "/login"></NavLink>
+      <Link to= "/dash"></Link>
       <div className="flex w-screen justify-self-center   max-w-md pd-10 pt-20 rounded-md">
         {
           regErrors.map((error, i) => (
-            <div className="bg-red-500 pd-2 text-white text-center">
+            <div className="bg-red-500 pd-2 text-white text-center " key={i}>
               {error}
             </div>
           ))
         }
-        <div className="bg-zinc-800 max-w-md w-full p-5 rounded-md">
+        <div className="bg-zinc-700 max-w-md w-full p-5 rounded-md">
           <h1 className="text-2xl font-bold">Registro</h1>
           <form onSubmit={onSubmit}>
             <input type="text" {...register ("nombre", {required: true})} 
